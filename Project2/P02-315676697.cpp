@@ -254,19 +254,118 @@ void CrearArbolHojas()
 
 void CrearLetrasyFiguras()
 {
-	GLfloat vertices_letras[] = {	
-			//X			Y			Z			R		G		B
-			-1.0f,	-1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
-			1.0f,	-1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
-			1.0f,	1.0f,		0.5f,			0.0f,	0.0f,	1.0f,
-			/*1.0f,	1.0f,		0.5f,			1.0f,	0.0f,	0.0f,
-			-1.0f,  1.0f,		0.5f,			1.0f,	0.0f,	0.0f,
-			-1.0f,	-1.0f,		0.5f,			1.0f,	0.0f,	0.0f,*/
+	GLfloat vertices_letraV[] = {	
+			//X    Y	Z		R		G		B
+			//----------- V (\)
+			-0.7f, 0.6f,0.0f, 0.0f,	0.0f,	1.0f,
+			-0.6f, 0.7f,0.0f, 0.0f,	0.0f,	1.0f,
+			-0.5f, 0.4f,0.0f, 0.0f,	0.0f,	1.0f,
+
+			-0.6f, 0.7f,0.0f, 0.0f,	0.0f,	1.0f,
+			-0.4f, 0.5f,0.0f, 0.0f,	0.0f,	1.0f,
+			-0.5f, 0.4f,0.0f, 0.0f,	0.0f,	1.0f,
+			//triangulo V
+			-0.5f, 0.4f,0.0f, 0.0f,	0.0f,	1.0f,
+			-0.4f, 0.5f,0.0f, 0.0f,	0.0f,	1.0f,
+			-0.3f, 0.4f,0.0f, 0.0f,	0.0f,	1.0f,
+
+			//V (/)
+			-0.4f, 0.5f,0.0f, 0.0f,	0.0f,	1.0f,
+			-0.2f, 0.7f,0.0f, 0.0f,	0.0f,	1.0f,
+			-0.3f, 0.4f,0.0f, 0.0f,	0.0f,	1.0f,
+
+			-0.3f, 0.4f,0.0f, 0.0f,	0.0f,	1.0f,
+			-0.1f, 0.6f,0.0f, 0.0f,	0.0f,	1.0f,
+			-0.2f, 0.7f,0.0f, 0.0f,	0.0f,	1.0f,
+
 			
 	};
-	MeshColor *letras = new MeshColor();
-	letras->CreateMeshColor(vertices_letras,18);
-	meshColorList.push_back(letras);
+	MeshColor* letraV = new MeshColor();
+	letraV->CreateMeshColor(vertices_letraV, 90);
+	meshColorList.push_back(letraV);
+	
+	GLfloat vertices_letraA[] = {
+
+		//---------------- A (/)
+		0.0f, 0.5f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.1f, 0.4f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.3f, 0.8f,0.0f, 1.0f,	0.0f,	0.0f,
+
+		0.1f, 0.4f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.4f, 0.7f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.3f, 0.8f,0.0f, 1.0f,	0.0f,	0.0f,
+		// Triangulo A
+		0.3f, 0.8f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.4f, 0.7f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.5f, 0.8f,0.0f, 1.0f,	0.0f,	0.0f,
+		//A (\)
+		0.4f, 0.7f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.5f, 0.8f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.7f, 0.4f,0.0f, 1.0f,	0.0f,	0.0f,
+
+		0.7f, 0.4f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.8f, 0.5f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.5f, 0.8f,0.0f, 1.0f,	0.0f,	0.0f,
+		//A (-)
+		0.15f, 0.6f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.15f, 0.55f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.65f, 0.55f,0.0f, 1.0f,	0.0f,	0.0f,
+
+		0.65f, 0.55f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.15f, 0.6f,0.0f, 1.0f,	0.0f,	0.0f,
+		0.65f, 0.6f,0.0f, 1.0f,	0.0f,	0.0f,
+	};
+	MeshColor* letraA = new MeshColor();
+	letraA->CreateMeshColor(vertices_letraA, 126);
+	meshColorList.push_back(letraA);
+
+	GLfloat vertices_letraM[] = {
+		//---------------- M (| izq)
+			-0.6f, -0.5f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.5f, -0.5f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.6f, -0.2f,0.0f, 0.0f,	1.0f,	0.0f,
+
+			-0.6f, -0.2f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.5f, -0.5f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.5f, -0.2f,0.0f, 0.0f,	1.0f,	0.0f,
+
+			// M (| der)
+			-0.2f, -0.2f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.2f, -0.5f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.1f, -0.5f,0.0f, 0.0f,	1.0f,	0.0f,
+
+			-0.1f, -0.5f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.1f, -0.2f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.2f, -0.2f,0.0f, 0.0f,	1.0f,	0.0f,
+
+			//Triangulo M
+			-0.4f, -0.4f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.3f, -0.4f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.35f, -0.35f,0.0f, 0.0f,	1.0f,	0.0f,
+
+			// M (\)
+			-0.55f, -0.25f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.5f, -0.2f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.4f, -0.4f,0.0f, 0.0f,	1.0f,	0.0f,
+
+			-0.4f, -0.4f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.35f, -0.35f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.5f, -0.2f,0.0f, 0.0f,	1.0f,	0.0f,
+
+			// M(/)
+
+			-0.35f, -0.35f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.2f, -0.2f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.3f, -0.4f,0.0f, 0.0f,	1.0f,	0.0f,
+
+			-0.3f, -0.4f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.15f, -0.25f,0.0f, 0.0f,	1.0f,	0.0f,
+			-0.2f, -0.2f,0.0f, 0.0f,	1.0f,	0.0f,
+	};
+	MeshColor* letraM = new MeshColor();
+	letraM->CreateMeshColor(vertices_letraM, 162);
+	meshColorList.push_back(letraM);
+
 
 	GLfloat vertices_triangulorojo[] = {
 		//X			Y			Z			R		G		B
@@ -332,12 +431,12 @@ int main()
 {
 	mainWindow = Window(800, 700);
 	mainWindow.Initialise();
-	CreaPiramide(); //índice 0 en MeshList
-	CrearCubo();//índice 1 en MeshList
-	CrearVentana1();
-	CrearPuerta();
-	CrearArbolTronco();
-	CrearArbolHojas();
+	//CreaPiramide(); //índice 0 en MeshList
+	//CrearCubo();//índice 1 en MeshList
+	//CrearVentana1();
+	//CrearPuerta();
+	//CrearArbolTronco();
+	//CrearArbolHojas();
 	CrearLetrasyFiguras(); //usa MeshColor, índices en MeshColorList
 	CreateShaders();
 	GLuint uniformProjection = 0;
@@ -358,7 +457,7 @@ int main()
 		glClearColor(0.0f,0.0f,0.0f,1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Se agrega limpiar el buffer de profundidad
 		
-		/*
+		
 		//Para las letras hay que usar el segundo set de shaders con índice 1 en ShaderList 
 		shaderList[2].useShader();
 		uniformModel = shaderList[2].getModelLocation();
@@ -367,12 +466,42 @@ int main()
 		//Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -4.0f));
+
 		//
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		meshColorList[0]->RenderMeshColor();
-		*/
 
+
+		//Para las letras hay que usar el segundo set de shaders con índice 1 en ShaderList 
+		shaderList[3].useShader();
+		uniformModel = shaderList[3].getModelLocation();
+		uniformProjection = shaderList[3].getProjectLocation();
+
+		//Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -4.0f));
+
+		//
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		meshColorList[1]->RenderMeshColor();
+
+		//Para las letras hay que usar el segundo set de shaders con índice 1 en ShaderList 
+		shaderList[4].useShader();
+		uniformModel = shaderList[4].getModelLocation();
+		uniformProjection = shaderList[4].getProjectLocation();
+
+		//Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -4.0f));
+
+		//
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA y se envían al shader como variables de tipo uniform
+		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		meshColorList[2]->RenderMeshColor();
+		
+		/*
 		//------------TRIANGULO----------------
 
 		//Para el cubo y la pirámide se usa el primer set de shaders con índice 0 en ShaderList
@@ -472,6 +601,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		meshList[5]->RenderMesh();
+		*/
 
 		glUseProgram(0);
 		mainWindow.swapBuffers();
