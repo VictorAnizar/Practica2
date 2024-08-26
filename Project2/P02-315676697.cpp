@@ -107,151 +107,6 @@ meshList.push_back(cubo);
 }
 
 
-//Vértices de un cubo
-void CrearVentana1()
-{
-	unsigned int cubo_indices[] = {
-		// front
-		0, 1, 2,
-		2, 3, 0,
-		// right
-		1, 5, 6,
-		6, 2, 1,
-		// back
-		7, 6, 5,
-		5, 4, 7,
-		// left
-		4, 0, 3,
-		3, 7, 4,
-		// bottom
-		4, 5, 1,
-		1, 0, 4,
-		// top
-		3, 2, 6,
-		6, 7, 3
-	};
-
-	GLfloat cubo_vertices[] = {
-		// front
-		-0.1f, 0.1f,  0.1f,
-		-0.05f, 0.1f,  0.1f,
-		-0.05f,  0.15f,  0.1f,
-		-0.1f,  0.15f,  0.1f,
-		// back
-		-0.1f, 0.1f, -0.1f,
-		-0.05f, 0.1f, -0.1f,
-		-0.05f,  0.15f, -0.1f,
-		-0.1f,  0.15f, -0.1f
-	};
-	Mesh* ventana1 = new Mesh();
-	ventana1->CreateMesh(cubo_vertices, cubo_indices, 24, 36);
-	meshList.push_back(ventana1);
-}
-
-//Vértices de un cubo
-void CrearPuerta()
-{
-	unsigned int cubo_indices[] = {
-		// front
-		0, 1, 2,
-		2, 3, 0,
-		// right
-		1, 5, 6,
-		6, 2, 1,
-		// back
-		7, 6, 5,
-		5, 4, 7,
-		// left
-		4, 0, 3,
-		3, 7, 4,
-		// bottom
-		4, 5, 1,
-		1, 0, 4,
-		// top
-		3, 2, 6,
-		6, 7, 3
-	};
-
-	GLfloat cubo_vertices[] = {
-		// front
-		-0.05f, -0.1f,  0.1f,
-		0.05f, -0.1f,  0.1f,
-		-0.05f,  -0.2f,  0.1f,
-		0.05f,  -0.2f,  0.1f,
-		// back
-		-0.05f, -0.1f, -0.1f,
-		0.05f, -0.1f, -0.1f,
-		-0.05f,  -0.2f, -0.1f,
-		0.05f,  -0.2f, -0.1f
-	};
-	Mesh* puerta = new Mesh();
-	puerta->CreateMesh(cubo_vertices, cubo_indices, 24, 36);
-	meshList.push_back(puerta);
-}
-
-//Vértices de un cubo
-void CrearArbolTronco()
-{
-	unsigned int cubo_indices[] = {
-		// front
-		0, 1, 2,
-		2, 3, 0,
-		// right
-		1, 5, 6,
-		6, 2, 1,
-		// back
-		7, 6, 5,
-		5, 4, 7,
-		// left
-		4, 0, 3,
-		3, 7, 4,
-		// bottom
-		4, 5, 1,
-		1, 0, 4,
-		// top
-		3, 2, 6,
-		6, 7, 3
-	};
-
-	GLfloat cubo_vertices[] = {
-		// front
-		-0.5f, -0.1f,  0.1f,
-		-0.4f, -0.1f,  0.1f,
-		-0.5f,  -0.2f,  0.1f,
-		-0.4f,  -0.2f,  0.1f,
-		// back
-		-0.5f, -0.1f, -0.1f,
-		-0.4f, -0.1f, -0.1f,
-		-0.5f,  -0.2f, -0.1f,
-		-0.4f,  -0.2f, -0.1f
-	};
-	Mesh* tronco = new Mesh();
-	tronco->CreateMesh(cubo_vertices, cubo_indices, 24, 36);
-	meshList.push_back(tronco);
-}
-
-void CrearArbolHojas()
-{
-	unsigned int indices[] = {
-		0,1,2,
-		1,3,2,
-		3,0,2,
-		1,0,3
-
-	};
-	GLfloat vertices[] = {
-		-0.55f, -0.1f,0.0f,	//0
-		-0.35f, -0.1f,0.0f,	//1
-		-0.45f,0.1f, 0.0f,	//2
-		-0.45f,0.0f,-0.5f,	//3
-
-	};
-	Mesh* hojas = new Mesh();
-	hojas->CreateMesh(vertices, indices, 12, 12);
-	meshList.push_back(hojas);
-
-}
-
 void CrearLetrasyFiguras()
 {
 	GLfloat vertices_letraV[] = {	
@@ -434,12 +289,14 @@ int main()
 	CreaPiramide(); //índice 0 en MeshList
 	CrearCubo();//índice 1 en MeshList
 	
-	//CrearLetrasyFiguras(); //usa MeshColor, índices en MeshColorList
+	CrearLetrasyFiguras(); //usa MeshColor, índices en MeshColorList
 	CreateShaders();
 	GLuint uniformProjection = 0;
 	GLuint uniformModel = 0;
 	//Projection: Matriz de Dimensión 4x4 para indicar si vemos en 2D( orthogonal) o en 3D) perspectiva
+	// Usar la sig linea para ejercicio 1
 	//glm::mat4 projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f);
+	//Usar la sig linea para ejercicio 2
 	glm::mat4 projection = glm::perspective(glm::radians(60.0f)	,mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f);
 	
 	//Model: Matriz de Dimensión 4x4 en la cual se almacena la multiplicación de las transformaciones geométricas.
@@ -622,109 +479,6 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 		meshList[0]->RenderMesh();
-
-		//EJERCICIO DE CLASE
-		/*
-		//------------TRIANGULO----------------
-
-		//Para el cubo y la pirámide se usa el primer set de shaders con índice 0 en ShaderList
-		shaderList[0].useShader(); 
-		uniformModel = shaderList[0].getModelLocation();
-		uniformProjection = shaderList[0].getProjectLocation();
-		//angulo += 0.01;
-		//Inicializar matriz de dimensión 4x4 que servirá como matriz de modelo para almacenar las transformaciones geométricas
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshList[0]->RenderMesh();
-
-		//------------CUADRADO----------------
-
-		shaderList[4].useShader();
-		uniformModel = shaderList[4].getModelLocation();
-		uniformProjection = shaderList[4].getProjectLocation();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshList[1]->RenderMesh();
-
-		//------------VENTANA IZQUIERSA----------------
-
-		shaderList[2].useShader();
-		uniformModel = shaderList[2].getModelLocation();
-		uniformProjection = shaderList[2].getProjectLocation();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshList[2]->RenderMesh();
-
-		//------------VENTANA DERECHA----------------
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.15f, 0.0f, -1.0f)); //Como es la misma ventana solo se traslada en X
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshList[2]->RenderMesh();
-
-		//------------PUERTA----------------
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f)); //Como es la misma ventana solo se traslada en X
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshList[3]->RenderMesh();
-
-		//------------Arbol IZQUIERDO----------------
-
-		shaderList[3].useShader();
-		uniformModel = shaderList[3].getModelLocation();
-		uniformProjection = shaderList[3].getProjectLocation();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshList[4]->RenderMesh();
-		//Hojas
-		shaderList[1].useShader();
-		uniformModel = shaderList[1].getModelLocation();
-		uniformProjection = shaderList[1].getProjectLocation();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshList[5]->RenderMesh();
-
-
-		//------------Arbol DERECHO----------------
-
-		shaderList[3].useShader();
-		uniformModel = shaderList[3].getModelLocation();
-		uniformProjection = shaderList[3].getProjectLocation();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.9f, 0.0f, -1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshList[4]->RenderMesh();
-
-		//Hojas
-		shaderList[1].useShader();
-		uniformModel = shaderList[1].getModelLocation();
-		uniformProjection = shaderList[1].getProjectLocation();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.9f, 0.0f, -1.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));//FALSE ES PARA QUE NO SEA TRANSPUESTA
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		meshList[5]->RenderMesh();
-		*/
 
 		glUseProgram(0);
 		mainWindow.swapBuffers();
